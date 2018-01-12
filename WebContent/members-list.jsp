@@ -8,7 +8,7 @@
 List<Member> myMembers = (List<Member>) request.getAttribute("MEMBER_LIST");
 %>
 <body>
-	HELLO
+	HELLO 
 	<div id="header">
 	<h2>De Paul orchestra members</h2>
 	

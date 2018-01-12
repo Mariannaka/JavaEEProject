@@ -17,9 +17,6 @@ import javax.sql.DataSource;
  * and talks to the utility and then sends it to the JSP
  */
 
-/**
- * Servlet implementation class MemberControllerServlet
- */
 @WebServlet("/MemberControllerServlet")
 public class MemberControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,17 +52,23 @@ public class MemberControllerServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String myUser = request.getParameter("user");
+		String myPass = request.getParameter("pass");
+		
+		if(myUser.equals("user") && myPass.equals("123")) {
+		
 		try {
 			listMembers(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	} else {
+		response.sendRedirect("indexing.jsp");
+	}
 	}
 
 
