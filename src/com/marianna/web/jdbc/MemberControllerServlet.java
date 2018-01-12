@@ -64,7 +64,6 @@ public class MemberControllerServlet extends HttpServlet {
 		try {
 			listMembers(request, response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
