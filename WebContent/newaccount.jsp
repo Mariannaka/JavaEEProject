@@ -9,13 +9,13 @@
 	<h5>The page is under construction...</h5>
 	
 	<form action="MemberControllerServlet">
-	Please log in with your account:
+	Please fill in with the required information:
 	<br><br>
-	Enter your name: <input type="text" name="user"/><br><br>
-	Enter your password: <input type="password" name="pass"/><br><br>
-	<input type="submit" value="Log in" />
+	Enter a new name: <input type="text" name="user"/><br><br>
+	Enter a new password: <input type="password" name="pass"/><br><br>
+	Confirm new password: <input type="password" name="confpass"/><br><br>
+	<input type="submit" value="Sign up" />
 	<br><br><br>
-	Don't have an account? <a href="newaccount.jsp"> click here </a> to create a new account.
 	</form>
 
 

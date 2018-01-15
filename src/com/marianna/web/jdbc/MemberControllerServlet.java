@@ -1,6 +1,7 @@
 package com.marianna.web.jdbc;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
@@ -58,19 +60,26 @@ public class MemberControllerServlet extends HttpServlet {
 		
 		String myUser = request.getParameter("user");
 		String myPass = request.getParameter("pass");
+		HttpSession mySession = request.getSession();
+		mySession.setAttribute("mySessionUser", myUser);
 		
-		if(myUser.equals("user") && myPass.equals("123")) {
-		
-		try {
-			listMembers(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	} else {
-		response.sendRedirect("indexing.jsp");
-	}
-	}
+		if (myUser.equals("user") && myPass.equals("123")) {
 
+			try {
+				listMembers(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			response.setHeader("Cache-Control", "no-cashe, no-store, must-revalidate");
+
+			PrintWriter myPrint = response.getWriter();
+			myPrint.println("Welcome " + myUser + " to De Paul Orchestra");
+
+		} else if (!myUser.equals("user") || !myPass.equals("123") || myUser == null || myPass == null) {
+			response.sendRedirect("indexing.jsp");
+		}
+	}
 
 	private void listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		// get members from db util

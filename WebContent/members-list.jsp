@@ -9,9 +9,10 @@ List<Member> myMembers = (List<Member>) request.getAttribute("MEMBER_LIST");
 %>
 <body>
 	HELLO 
+	welcome <% session.getAttribute("myUser"); %>
+	
 	<div id="header">
 	<h2>De Paul orchestra members</h2>
-	
 	</div>
 
 	<div id="container">
@@ -35,10 +36,15 @@ List<Member> myMembers = (List<Member>) request.getAttribute("MEMBER_LIST");
 				<% } %>
 			</table>
 
+			<form action="indexing.jsp">
+				<input type="submit" value="Log out" />
+				<% session.removeAttribute("mySessionUser");
+					session.invalidate(); %>
+			</form>
+
 		</div>
 
 	</div>
-
-
+	
 </body>
 </html>
