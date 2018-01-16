@@ -29,10 +29,10 @@ public class MemberDbUtil {
 			con = myDataSource.getConnection();
 
 			// create statement
-			String sql = "select * from orchestra_player";
 			st = con.createStatement();
 
 			// execute query
+			String sql = "select * from orchestra_player";
 			rs = st.executeQuery(sql);
 
 			// process resultSet

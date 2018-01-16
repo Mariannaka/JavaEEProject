@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.marianna.web.jdbc.dao.AccountLoginDao;
+
 /**
  * this class handles the initial request 
  * and talks to the utility and then sends it to the JSP
@@ -63,7 +65,10 @@ public class MemberControllerServlet extends HttpServlet {
 		HttpSession mySession = request.getSession();
 		mySession.setAttribute("mySessionUser", myUser);
 		
-		if (myUser.equals("user") && myPass.equals("123")) {
+		
+		AccountLoginDao myAccount = new AccountLoginDao();
+		
+		if (myAccount.checkStatus(myUser, myPass)) {
 
 			try {
 				listMembers(request, response);

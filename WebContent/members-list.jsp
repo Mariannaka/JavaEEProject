@@ -5,6 +5,7 @@
 <title>De Paul orchestra members</title>
 </head>
 <%
+//get the students from the request object (sent by the servlet)
 List<Member> myMembers = (List<Member>) request.getAttribute("MEMBER_LIST");
 %>
 <body>
