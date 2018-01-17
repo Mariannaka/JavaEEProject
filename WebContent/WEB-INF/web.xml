@@ -9,14 +9,4 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <servlet>
-  <servlet-name>MemberControllerServlet</servlet-name>
-  <servlet-class>com.marianna.web.jdbc.MemberControllerServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-  <servlet-name>MemberControllerServlet</servlet-name>
-  <url-pattern>/callServlet/*</url-pattern>
-</servlet-mapping>
-
 </web-app>

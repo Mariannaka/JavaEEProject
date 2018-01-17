@@ -10,8 +10,16 @@ List<Member> myMembers = (List<Member>) request.getAttribute("MEMBER_LIST");
 %>
 <body>
 	HELLO 
-	welcome <% session.getAttribute("myUser"); %>
+
+	<%
+		response.setHeader("Cache-Control", "no-cashe, no-store, must-revalidate");
+		if (session.getAttribute("mySessionUser") == null) {
+			response.sendRedirect("indexing.jsp");
+		}
+	%>
 	
+	welcome ${mySessionUser}
+
 	<div id="header">
 	<h2>De Paul orchestra members</h2>
 	</div>
@@ -37,7 +45,7 @@ List<Member> myMembers = (List<Member>) request.getAttribute("MEMBER_LIST");
 				<% } %>
 			</table>
 
-			<form action="indexing.jsp">
+			<form action="indexing.jsp" method="post">
 				<input type="submit" value="Log out" />
 				<% session.removeAttribute("mySessionUser");
 					session.invalidate(); %>

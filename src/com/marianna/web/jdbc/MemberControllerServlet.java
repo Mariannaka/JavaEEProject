@@ -55,35 +55,17 @@ public class MemberControllerServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 	}
-
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String myUser = request.getParameter("user");
-		String myPass = request.getParameter("pass");
-		HttpSession mySession = request.getSession();
-		mySession.setAttribute("mySessionUser", myUser);
-		
-		
-		AccountLoginDao myAccount = new AccountLoginDao();
-		
-		if (myAccount.checkStatus(myUser, myPass)) {
-
+	
 			try {
 				listMembers(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			response.setHeader("Cache-Control", "no-cashe, no-store, must-revalidate");
 
-			PrintWriter myPrint = response.getWriter();
-			myPrint.println("Welcome " + myUser + " to De Paul Orchestra");
-
-		} else if (!myUser.equals("user") || !myPass.equals("123") || myUser == null || myPass == null) {
-			response.sendRedirect("indexing.jsp");
-		}
 	}
 
 	private void listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception{
