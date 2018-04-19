@@ -1,5 +1,6 @@
 <%@page import="com.marianna.web.bean.Member"%>
-<%@ page import="java.util.*, com.marianna.web.jdbc.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix= "c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <title>  De Paul orchestra members  </title>
 </head>
-<%
-	//get the students from the request object (sent by the servlet)
-	List<Member> myMembers = (List<Member>) request.getAttribute("MEMBER_LIST");
-%>
+
 <body>
 	HELLO
 
@@ -68,17 +66,20 @@
 					<th>Nationality</th>
 					<th>Settings</th>
 				</tr>
-
-				<% for (Member temp : myMembers) { %>
+				
+				<%-- In this forEach loop MEMBER_LIST is the same 
+				attribute name that we set by servlet in MemberControllerServlet.java class --%>
+				<c:forEach var= "tempMembers" items="${MEMBER_LIST}">
 				<tr>
-					<td><%=temp.getFullName()%></td>
-					<td><%=temp.getEmail()%></td>
-					<td><%=temp.getNationality()%></td>
-					<td><%=temp.getTitle()%></td>
+					<td>${tempMembers.fullName}</td>
+					<td>${tempMembers.email}</td>
+					<td>${tempMembers.title}</td>
+					<td>${tempMembers.nationality}</td>
 					<td><input type="submit" class="btn btn-success" role="button" value="Edit" /></td>
 					<td><input type="submit" class="btn btn-danger" role="button" value="Delete" /></td>
 				</tr>
-				<% } %>
+				
+				</c:forEach>
 			</table>	
 			
 			</div>
