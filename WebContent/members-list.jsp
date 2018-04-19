@@ -1,3 +1,4 @@
+<%@page import="com.marianna.web.bean.Member"%>
 <%@ page import="java.util.*, com.marianna.web.jdbc.*"%>
 <!DOCTYPE html>
 <html>

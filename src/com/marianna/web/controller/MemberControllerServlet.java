@@ -1,4 +1,4 @@
-package com.marianna.web.jdbc;
+package com.marianna.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.marianna.web.bean.Member;
+import com.marianna.web.jdbc.MemberDbUtil;
 import com.marianna.web.jdbc.dao.AccountLoginDao;
 
 /**
@@ -29,10 +31,13 @@ public class MemberControllerServlet extends HttpServlet {
 	 * setting up a reference to MemberDbUtil
 	 */
 	private MemberDbUtil memberDbUtil;
+
 	
 	/**
 	 * TomCat server will inject the connection pool object 
 	 * and assign it to the DataSource object
+	 * and we that with the help of @Resource annotation.
+	 * Provide the same resource name as it is in context.xml file
 	 */
 	@Resource(name="jdbc/myvillage")
 	private DataSource myDataSource;

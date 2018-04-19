@@ -1,4 +1,13 @@
-package com.marianna.web.jdbc;
+
+package com.marianna.web.bean;
+
+/**
+ * 
+ * @author marianna
+ * A bean class to create new objects of "member" type
+ * which represent the orchestra members.
+ *
+ */
 
 public class Member {
 	private int id;
@@ -6,6 +15,14 @@ public class Member {
 	private String email;
 	private String title;
 	private String nationality;
+	
+	/**
+	 * 
+	 * @param fullName
+	 * @param email
+	 * @param title
+	 * @param nationality
+	 */
 	
 	
 	

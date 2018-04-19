@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.marianna.web.bean.Member;
+
 public class MemberDbUtil {
 	
 	private DataSource myDataSource;

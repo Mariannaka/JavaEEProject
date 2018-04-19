@@ -1,7 +1,6 @@
-package com.marianna.web.jdbc;
+package com.marianna.web.controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.marianna.web.jdbc.dao.AccountLoginDao;
+
+/**
+ * 
+ * @author marianna
+ * A servlet class which is going to handle the initial request
+ * and talk to the utility (MemberDbUtil.java) and send it to a jsp 
+ *
+ */
 
 @WebServlet("/AccountLoginServlet")
 public class AccountLoginServlet extends HttpServlet {
