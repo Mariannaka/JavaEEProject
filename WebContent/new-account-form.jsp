@@ -9,7 +9,7 @@
 <title>new account</title>
 </head>
 <body>
-	<h2>Welocme to Vivaldi's village of classical music</h2>
+	<h2>Welcome to Vivaldi's village of classical music</h2>
 	<h5>The page is under construction...</h5>
 	<br><br><br>
 	
@@ -22,7 +22,6 @@
 	<input type="submit" value="Sign up" />
 	<br><br><br>
 	</form>
-
 
 </body>
 </html>

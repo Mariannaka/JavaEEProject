@@ -11,12 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import com.marianna.web.jdbc.dao.AccountLoginDao;
 
-/**
- * 
+/** 
  * @author marianna
  * A servlet class which is going to handle the initial request
  * and talk to the utility (MemberDbUtil.java) and send it to a jsp 
- *
  */
 
 @WebServlet("/AccountLoginServlet")
@@ -33,12 +31,12 @@ public class AccountLoginServlet extends HttpServlet {
 		HttpSession mySession = request.getSession();
 		mySession.setAttribute("mySessionUser", myUser);
 		
-		//check if the user is inloged
+		//check if the user is in-logged 
 		if (myAccount.checkStatus(myUser, myPass)) {
 			response.sendRedirect("MemberControllerServlet");
 			
 		} else {
-			response.sendRedirect("indexing.jsp");
+			response.sendRedirect("index.jsp");
 		}
 	}
 

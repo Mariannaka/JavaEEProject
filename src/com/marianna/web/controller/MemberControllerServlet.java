@@ -62,15 +62,63 @@ public class MemberControllerServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
 			try {
-				listMembers(request, response);
+				
+				//get the command parameter from new-member-form.jsp
+				String myCommand = request.getParameter("command");
+				
+				//if the command is empty, then list the default list
+				if(myCommand == null) {
+					myCommand = "LIST";
+				}
+				
+				switch (myCommand) {
+				
+				case "LIST" :
+					listMembers(request, response);
+					break;
+					
+				case "ADD" :
+					addMembers(request, response);
+					break;
+					
+				default : 
+						listMembers(request, response);
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
+	}
+	
+	/**
+	 * This method will read data from new-member-form.jsp and create
+	 * a new member object using the same data as parameters for the new object.
+	 * Then save the new object in our database,
+	 * then list it on our existing list and display it to the user 
+	 * @throws Exception 
+	 */
+
+	private void addMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		//1.read data from the form
+		String fullName = request.getParameter("full-name");
+		String email = request.getParameter("email");
+		String title = request.getParameter("title");
+		String nationality = request.getParameter("nationality");
+
+		//2.create new member object
+		Member newMember = new Member(fullName, email, title, nationality);
+		
+		//3.save the new object in database
+		memberDbUtil.addMember(newMember);
+		
+		//4.display/send that data in the list
+		listMembers(request, response);
 	}
 
 	private void listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception{

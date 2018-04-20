@@ -1,6 +1,7 @@
 package com.marianna.web.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -85,5 +86,39 @@ public class MemberDbUtil {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	
+	
+	public void addMember(Member newMember) throws Exception {
+		
+		Connection myConnection = null;
+		PreparedStatement myPreStatement = null;
+		
+		try {
+			myConnection = myDataSource.getConnection();
+			
+			String mySql = "insert into orchestra_player (full_name, email, title, nationality)"
+					+"values (?, ?, ?, ?)"; 
+			myPreStatement = myConnection.prepareStatement(mySql);
+			
+			//set the parameter values for the member
+			myPreStatement.setString(1, newMember.getFullName() );
+			myPreStatement.setString(2, newMember.getEmail());
+			myPreStatement.setString(3, newMember.getTitle());
+			myPreStatement.setString(4, newMember.getNationality());
+			
+			//execute the "insert" request
+			myPreStatement.execute();
+			
+		}
+		
+		finally {
+			
+			close (myConnection, null , myPreStatement);
+			
+		}
+		
+		
 	}
 }

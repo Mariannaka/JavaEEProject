@@ -27,14 +27,13 @@
 									placeholder="Password" name="pass" />
 							</div>
 							<div class="modal-footer">
-					<input class="btn btn-primary btn-block" type="submit"
-						value="Log in" />
+					<input class="btn btn-primary btn-block" type="submit" value="Log in" />
 				</div>
 					</div>
 				</form>
 	
 				<br><br><br>
-				Don't have an account? <a href="newaccount.jsp"> click here </a> to create a new account.
+				Don't have an account? <a href="new-account-form.jsp"> click here </a> to create a new account.
 				</form>
 
 
