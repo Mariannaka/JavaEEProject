@@ -20,7 +20,7 @@ public class AccountLoginDao {
 	String url = "jdbc:mysql://localhost:3306/myvillage";
 	String username = "myvillageuser";
 	String password = "myvillage11";
-	String sql = "select * from account where user_name=? and user_password=?";
+	String sql = "select * from user_account where user_name=? and user_password=?";
 	
 	public boolean checkStatus(String accountUsername, String accountPass) {
 		
