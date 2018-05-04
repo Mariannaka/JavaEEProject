@@ -11,16 +11,29 @@
 <body>
 	<h2>Welcome to Vivaldi's village of classical music</h2>
 	<h5>The page is under construction...</h5>
-	<br><br><br>
+	<br>
+	<br>
 	
-	<form action="MemberControllerServlet">
-	Please fill in with the required information:
-	<br><br>
-	Enter a new name: <input type="text" name="user"/><br><br>
-	Enter a new password: <input type="password" name="pass"/><br><br>
-	Confirm new password: <input type="password" name="confpass"/><br><br>
-	<input type="submit" value="Sign up" />
-	<br><br><br>
+	<form action="NewAccountController">
+		Please fill in with the required information:
+		<table>
+
+			<tr>
+				<td>Enter a new name:</td>
+				<td><input type="text" name="user_name" /><br></td>
+			</tr>
+
+			<tr>
+
+				<td>Enter a new password:</td>
+				<td><input type="password" name="user_pass" /><br></td>
+			</tr>
+			
+			<tr>
+				<td><input type="submit" name="addAccount" value="Sign up" /></td>
+			</tr>
+
+		</table>
 	</form>
 
 </body>

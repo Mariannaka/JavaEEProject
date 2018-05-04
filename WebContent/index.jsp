@@ -14,7 +14,7 @@
 				<h5>The page is under construction...</h5>
 				<br><br><br>
 
-				<form action="AccountLoginServlet" method="post">
+				<form action="AccountLoginController" method="post">
 					<div class="modal-body">
 						Please log in with your account: <br> <br>
 						<form role="form">

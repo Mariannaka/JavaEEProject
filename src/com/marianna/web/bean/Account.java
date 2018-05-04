@@ -1,17 +1,35 @@
 package com.marianna.web.bean;
 
-public class Account {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="user_account")
+public class Account implements Serializable {
 	
-	private String userName;
-	private String userPass;
+	@Id
+	@Column (name="user_id")
 	private int userId;
+
+	@Column (name="user_name")
+	private String userName;
+	
+	@Column (name="user_password")
+	private String userPass;
+	
+	public Account() {
+		
+	}
 	
 	
-	public Account(String userName, String userPass, int userId) {
+	public Account(String userName, String userPass) {
 		super();
 		this.userName = userName;
 		this.userPass = userPass;
-		this.userId = userId;
 	}
 	
 	
@@ -39,6 +57,11 @@ public class Account {
 		this.userId = userId;
 	}
 
-	
+
+	@Override
+	public String toString() {
+		return "Account [userId=" + userId + ", userName=" + userName + ", userPass=" + userPass + "]";
+	}
+
 
 }
