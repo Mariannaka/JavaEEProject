@@ -85,6 +85,18 @@ public class MemberController extends HttpServlet {
 					addMembers(request, response);
 					break;
 					
+				case "LOAD":
+					loadMember(request, response);
+					break;
+					
+				case "UPDATE":
+					updateMember(request, response);
+					break;
+					
+				case "DELETE":
+					deleteMember(request, response);
+					break;
+					
 				default : 
 						listMembers(request, response);
 				}
@@ -95,6 +107,45 @@ public class MemberController extends HttpServlet {
 
 	}
 	
+	
+	
+	private void deleteMember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String memberId = request.getParameter("memberId");
+		
+		memberDbUtil.deleteMember(memberId);
+		
+		listMembers(request, response);
+	}
+
+	private void updateMember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int id = Integer.parseInt(request.getParameter("memberId"));
+		String fullName = request.getParameter("full-name");
+		String email =request.getParameter("email") ;
+		String nationality = request.getParameter("nationality");
+		String title = request.getParameter("title") ;
+		
+		Member myMember = new Member (id, fullName, email, title, nationality);
+		
+		memberDbUtil.updateMember(myMember);
+		
+		listMembers(request, response);
+		
+		
+	}
+
+	private void loadMember(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		String memberId = request.getParameter("memberId");
+		Member myMember = memberDbUtil.getMember(memberId);
+		//place the member in request attribute
+		request.setAttribute("THE_MEMBER", myMember);
+		response.setContentType("text/html");
+		RequestDispatcher reqDis = request.getRequestDispatcher("/edit-member-form.jsp");
+		reqDis.forward(request, response);
+		  
+	}
+
 	/**
 	 * This method will read data from new-member-form.jsp and create
 	 * a new member object using the same data as parameters for the new object.
@@ -106,6 +157,7 @@ public class MemberController extends HttpServlet {
 	private void addMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		//1.read data from the form
+		int id = Integer.parseInt(request.getParameter("id"));
 		String fullName = request.getParameter("full-name");
 		String email = request.getParameter("email");
 		String title = request.getParameter("title");
@@ -127,7 +179,6 @@ public class MemberController extends HttpServlet {
 		
 		
 		// add members to the request
-		//myMembers.add();
 		request.setAttribute("MEMBER_LIST", myMembers);
 		
 		// send to jsp page (view)

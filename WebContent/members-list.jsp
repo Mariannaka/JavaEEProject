@@ -44,15 +44,36 @@
 					</tr>
 
 					<%-- In this forEach loop MEMBER_LIST is the same 
-				attribute name that we set by servlet in MemberControllerServlet.java class --%>
+				attribute name that we set by Servlet in MemberController.java class --%>
 					<c:forEach var="tempMembers" items="${MEMBER_LIST}">
+					
+					<c:url var="tempLink" value="MemberController">
+						<c:param name="command" value="LOAD" />
+						<c:param  name="memberId" value="${tempMembers.id}"/>
+					</c:url>
+					
+					
+					<c:url var="deleteLink" value="MemberController">
+						<c:param name="command" value="DELETE" />
+						<c:param  name="memberId" value="${tempMembers.id}"/>
+					</c:url>
+					
+					
 						<tr>
 							<td>${tempMembers.fullName}</td>
 							<td>${tempMembers.email}</td>
 							<td>${tempMembers.title}</td>
 							<td>${tempMembers.nationality}</td>
-							<td><input type="submit" class="btn btn-success" role="button" value="Edit" /></td>
-							<td><input type="submit" class="btn btn-danger" role="button" value="Delete" /></td>
+							<td><a href="${tempLink}">UPDATE</a>
+								<input type="button" value="update" onclick="window.location.href='edit-member-form.jsp'" />
+							</td>
+							<td><a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to remove this member?'))) return false">DELETE</a></td>
+							<td>
+							  <a href="${pageContext.request.contextPath}/MemberController?command=DELETE&memberId=${tempMembers.id}" 
+                               onclick="if (!(confirm('Are you sure you want to delete this student?'))) return false">
+									<input type="submit" class="btn btn-danger" role="button" value="Delete" />
+								</a>
+							</td>
 						</tr>
 
 					</c:forEach>

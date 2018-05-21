@@ -10,7 +10,7 @@
 <body>
 
 
-	<form action="MemberControllerServlet" role="form" method="GET">
+	<form action="MemberController" role="form" method="GET">
 	
 	<input name="command" type="hidden" value="ADD" />
 
@@ -44,7 +44,7 @@
 	</form>
 	
 	<div>
-	<a href="MemberControllerServlet">Back to members list.</a>
+	<a href="MemberController">Back to members list.</a>
 	</div>
 
 
