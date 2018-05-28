@@ -166,11 +166,10 @@ public class MemberDbUtil {
 		st.setString(2, myMember.getEmail());
 		st.setString(3, myMember.getTitle());
 		st.setString(4, myMember.getNationality());
-		st.setInt(4, myMember.getId());
-		
-		st.execute();
-		
-	} finally {
+		st.setInt(5, myMember.getId());
+		st.execute();	
+	} 
+		finally {
 		
 		close(con, rs, st);
 	}

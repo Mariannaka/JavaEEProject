@@ -1,0 +1,5 @@
+com.marianna.web.bean
+com.marianna.web.controller
+com.marianna.web.hibernate
+com.marianna.web.jdbc
+com.marianna.web.jdbc.dao

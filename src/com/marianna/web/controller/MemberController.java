@@ -129,11 +129,11 @@ public class MemberController extends HttpServlet {
 		
 		memberDbUtil.updateMember(myMember);
 		
-		listMembers(request, response);
-		
+		listMembers(request, response);	
 		
 	}
 
+	
 	private void loadMember(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		String memberId = request.getParameter("memberId");
