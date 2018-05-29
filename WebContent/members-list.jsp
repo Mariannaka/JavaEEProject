@@ -13,8 +13,6 @@
 </head>
 
 <body>
-	HELLO
-
 	<%
 	response.setHeader("Cache-Control", "no-cashe, no-store, must-revalidate");
 	if (session.getAttribute("mySessionUser") == null) {
@@ -64,14 +62,11 @@
 							<td>${tempMembers.email}</td>
 							<td>${tempMembers.title}</td>
 							<td>${tempMembers.nationality}</td>
-							<td><a href="${tempLink}">UPDATE</a>
-								<input type="button" value="update" onclick="window.location.href='edit-member-form.jsp'" />
-							</td>
+							<td><a href="${tempLink}">UPDATE</a></td>
 							<td><a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to remove this member?'))) return false">DELETE</a></td>
 							<td>
 							  <a href="${pageContext.request.contextPath}/MemberController?command=DELETE&memberId=${tempMembers.id}" 
                                onclick="if (!(confirm('Are you sure you want to delete this student?'))) return false">
-									<input type="submit" class="btn btn-danger" role="button" value="Delete" />
 								</a>
 							</td>
 						</tr>

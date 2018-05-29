@@ -16,9 +16,7 @@ public class CreateAccount {
 		Session mySession = mySessionFactory.getCurrentSession();
 		
 		try {
-			
-			
-			
+				
 			
 		} finally {
 			mySessionFactory.close();

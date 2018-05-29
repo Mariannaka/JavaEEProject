@@ -1,6 +1,9 @@
 package com.marianna.web.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.RequestDispatcher;
@@ -43,7 +46,6 @@ public class NewAccountController extends HttpServlet {
 			myAccount.setUserPass(userPass);
 			myAccountDaoImpl.saveNewAccount(myAccount);
 
-			
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 
 			rd.forward(request, response);
@@ -54,6 +56,28 @@ public class NewAccountController extends HttpServlet {
 
 		}
 	}
+	
+	
+	
+	  @Override
+	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
+	         if(request.getParameter("showAccounts")!=null){
+	            List<Account> accountList = new ArrayList<>();
+	            accountList = myAccountDaoImpl.showAllAccounts();
+	            request.setAttribute("accountList", accountList);
+	            RequestDispatcher rd = request.getRequestDispatcher("showAllAccounts.jsp");
+	            rd.forward(request, response);
+	        }
+	  }
+	
+	
+	
+	
+	
+	
+	
+	
 }
 	
 

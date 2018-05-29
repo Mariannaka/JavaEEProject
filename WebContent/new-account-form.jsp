@@ -35,6 +35,13 @@
 
 		</table>
 	</form>
+	
+	<br><br>
+	<h3>Show all accounts:</h3>
+		<form action="NewAccountController" method="POST">
+            <input type="submit" name="showAccounts" value="Show" />
+            <br>  
+        </form>
 
 </body>
 </html>

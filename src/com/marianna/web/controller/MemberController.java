@@ -63,7 +63,6 @@ public class MemberController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		
 			try {
 				
@@ -106,7 +105,6 @@ public class MemberController extends HttpServlet {
 			}
 
 	}
-	
 	
 	
 	private void deleteMember(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -176,8 +174,6 @@ public class MemberController extends HttpServlet {
 	private void listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		// get members from db util
 		List<Member> myMembers = memberDbUtil.getMembers();
-		
-		
 		// add members to the request
 		request.setAttribute("MEMBER_LIST", myMembers);
 		
